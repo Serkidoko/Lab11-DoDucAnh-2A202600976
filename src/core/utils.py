@@ -16,6 +16,9 @@ async def chat_with_agent(agent, runner, user_message: str, session_id=None):
     Returns:
         Tuple of (response_text, session)
     """
+    if hasattr(runner, "respond"):
+        return await runner.respond(user_message), None
+
     user_id = "student"
     app_name = runner.app_name
 
